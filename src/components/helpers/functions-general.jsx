@@ -1,0 +1,1 @@
+export const baseImgUrl = "http://localhost/react-youtube/public/img/";
