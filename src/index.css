@@ -37,3 +37,31 @@
   background: gray;
 }
 
+
+/* Video Hover */
+
+.video-thumbnail{
+  @apply inline-block relative 
+}
+
+.thumbnail{
+  @apply relative w-auto h-auto overflow-hidden
+}
+
+.thumnail:hover img{
+  @apply opacity-0
+}
+
+.thumbnail img {
+  @apply w-[100%] h-auto transition-opacity duration-[.3] ease-in
+}
+
+.thumbnail video{
+  @apply absolute top-0 left-0 w-[100%] h-auto opacity-0 transition-opacity duration-[.3] ease-in
+}
+
+.thumbnail:hover video{
+  @apply opacity-100
+}
+
+

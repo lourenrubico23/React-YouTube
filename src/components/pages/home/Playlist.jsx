@@ -5,33 +5,45 @@ import { BsThreeDotsVertical } from 'react-icons/bs'
 import { videos } from './data'
 
 const Playlist = () => {
+    
   return (
+    <>
     <div className='all grid grid-cols-4 gap-4'>
-
        {videos.map((item, key) => (
-        <button>
-            <div className="cards">
-                <div className="image " key={key}>
-                    <img src={`${baseImgUrl}/playlist/${item.img1}`} alt="" className='rounded-xl object-cover relative'/>
-                    <small className='bg-stone-700 p-1 rounded-md absolute -translate-y-9 translate-x-20 ml-[2.5rem] text-white bg-opacity-70'>{item.duration}</small>
+        <a> 
+            <div className="cards cursor-pointer">
+                <div className="video-thumbnail relative" >
+                    <div className="thumbnail" key={key}>
+                        <img src={`${baseImgUrl}/playlist/${item.img1}`} alt="" className='rounded-xl object-cover'/>
+                        <video className='video' autoPlay loop muted>
+                            <source src={`${baseImgUrl}/${item.video}`} type='video/mp4'/>
+                        </video>
+                    </div>
+                    <small className='bg-stone-700 p-1 rounded-md absolute bottom-2 right-2 text-white bg-opacity-70'>{item.duration}</small>
                 </div>
-                <div className="title grid grid-cols-[.3fr,2fr,.1fr] items-center mt-3">
+
+                <div className="title grid grid-cols-[.3fr,2fr,.1fr] items-start mt-3">
                     <img src={`${baseImgUrl}/playlist/${item.img2}`} alt="" className='rounded-full object-cover w-[2.5rem] '/>
-                    <h3 className='text-[1rem] font-semibold line-clamp-2'>{item.title}</h3>
+                    <div>
+                        <h3 className='text-[1rem] font-semibold line-clamp-2 text-left leading-6'>{item.title}</h3>
+                        <div className="content flex items-start">
+                            <p>{item.channel}</p>
+                        </div>
+                        <div className='views flex items-center'>
+                            <small className='flex'>{item.views} views</small>
+                            <GoDotFill className='text-[.5rem] m-1 '/>
+                            <small>{item.hours} ago</small> 
+                        </div>
+                    </div>
                     <BsThreeDotsVertical className='text-xl'/>
                 </div>
-                <div className="content flex items-start ml-14">
-                    <p>{item.channel}</p>
-                </div>
-                <div className='views flex items-center ml-14'>
-                    <small className='flex'>{item.views} views</small>
-                    <GoDotFill className='text-[.5rem] m-1 '/>
-                    <small>{item.hours} ago</small> 
-                </div>
+                
+                
             </div>
-        </button>
+        </a>
          ))}
     </div>
+    </>
   )
 }
 
